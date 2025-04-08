@@ -3,21 +3,161 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
+  <title>CSS Animated Testimonials</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #121212;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .image-box {
+      position: relative;
+      height: 300px;
+      perspective: 1000px;
+    }
+
+    .image-box .slide {
+      position: absolute;
+      inset: 0;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(0.9) rotateY(10deg) translateY(20px);
+      animation: fade 12s infinite ease-in-out;
+    }
+
+    .image-box .slide:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .image-box .slide:nth-child(2) {
+      animation-delay: 4s;
+    }
+
+    .image-box .slide:nth-child(3) {
+      animation-delay: 8s;
+    }
+
+    @keyframes fade {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(0.9) rotateY(10deg) translateY(20px);
+        z-index: 0;
+      }
+      10%, 30% {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg) translateY(0);
+        z-index: 2;
+      }
+      40% {
+        opacity: 0;
+        transform: scale(0.95) rotateY(-10deg) translateY(20px);
+        z-index: 1;
+      }
+    }
+
+    .text-box {
+      position: relative;
+      min-height: 200px;
+    }
+
+    .quote {
+      position: absolute;
+      opacity: 0;
+      animation: quoteFade 12s infinite ease-in-out;
+    }
+
+    .quote:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .quote:nth-child(2) {
+      animation-delay: 4s;
+    }
+
+    .quote:nth-child(3) {
+      animation-delay: 8s;
+    }
+
+    @keyframes quoteFade {
+      0%, 100% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      10%, 30% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      40% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+
+    .quote h3 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .quote .role {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    .quote .text {
+      margin-top: 1rem;
+      color: #aaa;
+      font-size: 1rem;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Hi, I'm darolle !</h1>
-    <p>Frontend Developer & Designer</p>
-  </header>
-
-  <section class="projects" id="project-list">
-  </section>
-
-  <footer>
-    <p>Made with <span id="heart">❤️</span> by John Doe</p>
-  </footer>
+  <div class="container">
+    <div class="image-box">
+      <div class="slide">
+        <img src="https://i.pravatar.cc/400?img=1" style="width:100%; height:100%; object-fit:cover;" />
+      </div>
+      <div class="slide">
+        <img src="https://i.pravatar.cc/400?img=2" style="width:100%; height:100%; object-fit:cover;" />
+      </div>
+      <div class="slide">
+        <img src="https://i.pravatar.cc/400?img=3" style="width:100%; height:100%; object-fit:cover;" />
+      </div>
+    </div>
+    <div class="text-box">
+      <div class="quote">
+        <h3>Darwin</h3>
+        <p class="role">UI Designer</p>
+        <p class="text">"Darwin brings colors and structure together with ease."</p>
+      </div>
+      <div class="quote">
+        <h3>Dimby</h3>
+        <p class="role">Frontend Developer</p>
+        <p class="text">"Building delightful user experiences is what I love."</p>
+      </div>
+      <div class="quote">
+        <h3>Dominique</h3>
+        <p class="role">UX Researcher</p>
+        <p class="text">"Research-driven design is key to our product's success."</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
